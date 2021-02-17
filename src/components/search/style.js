@@ -8,6 +8,9 @@ const Form = styled.form`
 
   span {
     margin-top: 20px;
+    :hover {
+      cursor: pointer;
+    }
   }
 
   @media (min-width: 700px) {

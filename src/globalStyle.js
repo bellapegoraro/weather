@@ -31,6 +31,7 @@ body {
 	line-height: 1;
 	height: 100%;
 	position: relative;
+    font-family: 'Newsreader', serif;
 }
 ol, ul {
 	list-style: none;
