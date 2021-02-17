@@ -1,10 +1,11 @@
 import Search from "../search/";
+import { Container } from "./style";
 
 const Header = () => {
   return (
-    <div>
+    <Container>
       <Search />
-    </div>
+    </Container>
   );
 };
 

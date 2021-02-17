@@ -1,6 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useState } from "react";
+import { Form } from "./style";
 
 const Search = () => {
   const [inputs, setInputs] = useState({ city: "", hour: "" });
@@ -47,35 +48,32 @@ const Search = () => {
   };
 
   return (
-    <form>
-      <div>
-        <TextField
-          id="standard-basic"
-          label="Pesquisar"
-          name="city"
-          value={inputs.city}
-          onChange={handleChange}
-        />
-        <span className="material-icons">search</span>
-      </div>
-      <div>
-        <TextField
-          id="standard-select-currency"
-          select
-          label="Hora"
-          name="hour"
-          value={inputs.hour}
-          onChange={handleChange}
-          helperText="Escolha a hora"
-        >
-          {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-      </div>
-    </form>
+    <Form>
+      <TextField
+        id="standard-basic"
+        label="Pesquisar"
+        name="city"
+        value={inputs.city}
+        onChange={handleChange}
+      />
+
+      <TextField
+        id="standard-select-currency"
+        select
+        label="Hora"
+        name="hour"
+        value={inputs.hour}
+        onChange={handleChange}
+        helperText="Escolha a hora"
+      >
+        {currencies.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
+      <span className="material-icons">search</span>
+    </Form>
   );
 };
 
