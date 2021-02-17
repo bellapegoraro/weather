@@ -7,7 +7,7 @@ const NextWeather = () => {
 
   const getData = async () => {
     const { data } = await axios.get(
-      "https://api.openweathermap.org/data/2.5/forecast?q=curitiba&units=metric&appid=b360753aa19b78389b811f9a464ab3f7"
+      "https://api.openweathermap.org/data/2.5/forecast?q=curitiba&units=metric&appid="
     );
     setResponse(data);
     getWeather();
