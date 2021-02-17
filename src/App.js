@@ -1,6 +1,6 @@
 import "./App.css";
-import CurrentWeather from "./components/current-weather/index";
-import NextWeather from "./components/next-weather/index";
+import CurrentWeather from "./components/current-weather/";
+import NextWeather from "./components/next-weather/";
 
 const App = () => {
   return (

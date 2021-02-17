@@ -7,7 +7,7 @@ const NextWeather = () => {
 
   const getData = async () => {
     const { data } = await axios.get(
-      "https://api.openweathermap.org/data/2.5/forecast?q=curitiba&units=metric&appid="
+      `https://api.openweathermap.org/data/2.5/forecast?q=curitiba&lang=pt_br&units=metric&appid=${process.env.REACT_APP_API_KEY}`
     );
     setResponse(data);
     getWeather();
@@ -21,8 +21,6 @@ const NextWeather = () => {
       setWeather(filtered);
     }
   };
-
-  console.log(weather);
 
   useEffect(() => {
     getData();
