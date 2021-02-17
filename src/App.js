@@ -1,7 +1,14 @@
 import "./App.css";
+import CurrentWeather from "./components/current-weather/index";
+import NextWeather from "./components/next-weather/index";
 
 const App = () => {
-  return <div className="App">iai</div>;
+  return (
+    <div>
+      {/* <CurrentWeather /> */}
+      <NextWeather />
+    </div>
+  );
 };
 
 export default App;
