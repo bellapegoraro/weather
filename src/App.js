@@ -1,14 +1,15 @@
 import Header from "./components/header/index";
 import CurrentWeather from "./components/current-weather/";
 import NextWeather from "./components/next-weather/";
+import Footer from "./components/footer/index";
 
 const App = () => {
   return (
     <div>
       <Header />
       <CurrentWeather />
-      <p>-----------------------------</p>
       <NextWeather />
+      <Footer />
     </div>
   );
 };

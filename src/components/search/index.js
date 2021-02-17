@@ -7,7 +7,7 @@ import {
   getCurrentWeatherThunk,
   getNextWeatherThunk,
   getHourWeatherThunk,
-} from "../../store/weather/thunk";
+} from "../../store/current-weather/thunk";
 
 const Search = () => {
   const [inputs, setInputs] = useState({ city: "", hour: "" });
