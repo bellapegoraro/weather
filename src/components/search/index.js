@@ -2,9 +2,16 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useState } from "react";
 import { Form } from "./style";
+import { useDispatch } from "react-redux";
+import {
+  getCurrentWeatherThunk,
+  getNextWeatherThunk,
+  getHourWeatherThunk,
+} from "../../store/weather/thunk";
 
 const Search = () => {
   const [inputs, setInputs] = useState({ city: "", hour: "" });
+  const dispatch = useDispatch();
 
   const currencies = [
     {
@@ -47,6 +54,14 @@ const Search = () => {
     setInputs({ ...inputs, [nam]: val });
   };
 
+  const handleSearch = () => {
+    if (inputs.city && inputs.hour !== "") {
+      dispatch(getCurrentWeatherThunk(inputs));
+      dispatch(getNextWeatherThunk(inputs));
+      dispatch(getHourWeatherThunk(inputs));
+    }
+  };
+
   return (
     <Form>
       <TextField
@@ -72,7 +87,9 @@ const Search = () => {
           </MenuItem>
         ))}
       </TextField>
-      <span className="material-icons">search</span>
+      <span className="material-icons" onClick={handleSearch}>
+        search
+      </span>
     </Form>
   );
 };

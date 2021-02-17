@@ -1,30 +1,29 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const CurrentWeather = () => {
-  const [response, setResponse] = useState(null);
-  const getData = async () => {
-    const { data } = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=curitiba&lang=pt_br&units=metric&appid=${process.env.REACT_APP_API_KEY}`
-    );
+  const [show, setShow] = useState(null);
+  const weather = useSelector((state) => state.weather.currentWeather);
 
-    setResponse(data);
+  const handleShow = () => {
+    if (weather) {
+      setShow(weather);
+    }
   };
-
   useEffect(() => {
-    getData();
+    handleShow();
   }, []);
+
   return (
     <div>
-      {response && (
+      {show && (
         <>
-          {" "}
-          <p>Temperatura atual: {response.main.temp} º C</p>
+          <p>Temperatura atual: {show[0].main.temp} º C</p>
           <img
             alt="icon-weather"
-            src={`http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`}
+            src={`http://openweathermap.org/img/wn/${show[0].weather[0].icon}@2x.png`}
           />
-          <p>{response.weather[0].description}</p>{" "}
+          <p>{show[0].weather[0].description}</p>
         </>
       )}
     </div>

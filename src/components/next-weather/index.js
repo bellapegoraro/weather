@@ -1,38 +1,39 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const NextWeather = () => {
-  const [response, setResponse] = useState(null);
-  const [weather, setWeather] = useState(null);
+  const [show, setShow] = useState(null);
 
-  const getData = async () => {
-    const { data } = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?q=curitiba&lang=pt_br&units=metric&appid=${process.env.REACT_APP_API_KEY}`
-    );
-    setResponse(data);
-    getWeather();
-  };
+  const weather = useSelector((state) => state.weather.nextWeather);
+  const hour = useSelector((state) => state.weather.hour);
 
-  const getWeather = () => {
-    if (response !== null) {
-      const filtered = response.list
+  const handleFilter = () => {
+    if (weather && hour) {
+      const filtered = weather[0].list
         .map((weather) => weather)
-        .filter((infos) => infos.dt_txt.includes("09:00:00"));
-      setWeather(filtered);
+        .filter((infos) => infos.dt_txt.includes(hour));
+      setShow(filtered);
     }
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    handleFilter();
+  }, [weather, hour]);
+
   return (
     <>
-      {weather &&
-        weather.map((infos) => (
+      {show &&
+        show.map((infos) => (
           <div key={infos.dt}>
             <p>Dia e horário: {infos.dt_txt}</p>
+            <img
+              alt="icon-weather"
+              src={`http://openweathermap.org/img/wn/${infos.weather[0].icon}@2x.png`}
+            />
             <p>Temperatura máxima: {infos.main.temp_max} ºC</p>
-            <p>Temperatura máxima: {infos.main.temp_min} ºC</p>
+            <p>Temperatura mínima: {infos.main.temp_min} ºC</p>
+            <p>Status da Previsão: {infos.weather[0].description}</p>
+            <p>Umidade: {infos.main.humidity} %</p>
           </div>
         ))}
     </>

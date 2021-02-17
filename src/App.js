@@ -6,8 +6,9 @@ const App = () => {
   return (
     <div>
       <Header />
-      {/* <CurrentWeather /> */}
-      {/* <NextWeather /> */}
+      <CurrentWeather />
+      <p>-----------------------------</p>
+      <NextWeather />
     </div>
   );
 };
