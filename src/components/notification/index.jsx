@@ -1,6 +1,6 @@
 import { Container } from "./style";
 
-const Notification = ({ added, error }) => {
+const Notification = () => {
   return <Container>Nenhuma cidade encontrada.</Container>;
 };
 

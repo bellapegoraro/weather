@@ -14,6 +14,7 @@ const Search = () => {
   const [inputs, setInputs] = useState({ city: "", hour: "" });
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
+
   const dispatch = useDispatch();
 
   const currencies = [
