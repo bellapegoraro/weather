@@ -35,7 +35,7 @@ const CurrentWeather = () => {
               title="weather"
             />
             <CardContent>
-              <Typography gutterBottom variant="body" component="h3">
+              <Typography gutterBottom variant="body2" component="h3">
                 Temperatura atual: {weather[0].main.temp} º C
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">

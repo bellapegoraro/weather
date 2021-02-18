@@ -52,13 +52,13 @@ const NextWeather = () => {
                 title="weather"
               />
               <CardContent>
-                <Typography gutterBottom variant="body" component="h4">
+                <Typography gutterBottom variant="caption" component="h4">
                   Dia e horário: {infos.dt_txt}
                 </Typography>
-                <Typography gutterBottom variant="body" component="h3">
+                <Typography gutterBottom variant="body2" component="h3">
                   Temperatura máxima: {infos.main.temp_max} ºC
                 </Typography>
-                <Typography gutterBottom variant="body" component="h3">
+                <Typography gutterBottom variant="body2" component="h3">
                   Temperatura mínima: {infos.main.temp_min} º C
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">

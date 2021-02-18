@@ -3,7 +3,7 @@ import { Container } from "./style";
 const Footer = () => {
   return (
     <Container>
-      Isabella Pegoraro <span class="material-icons">copyright</span>
+      Isabella Pegoraro <span className="material-icons">copyright</span>
     </Container>
   );
 };

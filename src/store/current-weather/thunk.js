@@ -2,8 +2,6 @@ import { getNextWeather, getCurrentWeather, getHourWeather } from "./actions";
 import axios from "axios";
 
 export const getCurrentWeatherThunk = (inputs) => (dispatch) => {
-  console.log(inputs.city);
-  console.log(inputs.hour);
   axios
     .get(
       `https://api.openweathermap.org/data/2.5/weather?q=${inputs.city}&lang=pt_br&units=metric&appid=${process.env.REACT_APP_API_KEY}`
