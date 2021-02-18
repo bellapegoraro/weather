@@ -24,6 +24,6 @@ Pode ocorrer um erro no deploy com o CI, caso ocorra, é só adicionar o CI ao '
 
 ## Sobre testes
 
-Não haverá testes pois, nunca tive um conhecimento muito forte em testes, conheço o básico de TDD para JavaScript vanilla e o React Testing Library. Estou me aprofundando agora em testes com Python.
+Testes foram realizados com o Cypress.
 
 Isabella Pegoraro
