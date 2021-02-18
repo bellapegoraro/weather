@@ -8,9 +8,12 @@ import {
   getNextWeatherThunk,
   getHourWeatherThunk,
 } from "../../store/current-weather/thunk";
+import Notification from "../notification/index";
 
 const Search = () => {
   const [inputs, setInputs] = useState({ city: "", hour: "" });
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
   const currencies = [
@@ -56,41 +59,50 @@ const Search = () => {
 
   const handleSearch = () => {
     if (inputs.city && inputs.hour !== "") {
-      dispatch(getCurrentWeatherThunk(inputs));
+      dispatch(getCurrentWeatherThunk(inputs, setOpen, setError));
       dispatch(getNextWeatherThunk(inputs));
       dispatch(getHourWeatherThunk(inputs));
     }
   };
 
-  return (
-    <Form>
-      <TextField
-        id="standard-basic"
-        label="Pesquisar"
-        name="city"
-        value={inputs.city}
-        onChange={handleChange}
-      />
+  if (error === true) {
+    setTimeout(() => {
+      setOpen(false);
+    }, 5000);
+  }
 
-      <TextField
-        id="standard-select-currency"
-        select
-        label="Hora"
-        name="hour"
-        value={inputs.hour}
-        onChange={handleChange}
-        helperText="Escolha a hora"
-      >
-        {currencies.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
-      <span className="material-icons" onClick={handleSearch}>
-        search
-      </span>
-    </Form>
+  return (
+    <>
+      {open && <Notification />}
+      <Form>
+        <TextField
+          id="standard-basic"
+          label="Pesquisar"
+          name="city"
+          value={inputs.city}
+          onChange={handleChange}
+        />
+
+        <TextField
+          id="standard-select-currency"
+          select
+          label="Hora"
+          name="hour"
+          value={inputs.hour}
+          onChange={handleChange}
+          helperText="Escolha a hora"
+        >
+          {currencies.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <span className="material-icons" onClick={handleSearch}>
+          search
+        </span>
+      </Form>
+    </>
   );
 };
 
