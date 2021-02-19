@@ -6,7 +6,7 @@ export const getCurrentWeatherThunk = (inputs, setOpen, setError) => (
 ) => {
   axios
     .get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${inputs.city}&lang=pt_br&units=metric&appid=${process.env.REACT_APP_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${inputs.city}&lang=pt_br&units=metric&appid=${process.env.REACT_APP_API_KEY_EXAMPLE}`
     )
     .then((res) => {
       dispatch(getCurrentWeather(res.data));
@@ -20,7 +20,7 @@ export const getCurrentWeatherThunk = (inputs, setOpen, setError) => (
 export const getNextWeatherThunk = (inputs) => (dispatch) => {
   axios
     .get(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${inputs.city}&lang=pt_br&units=metric&appid=${process.env.REACT_APP_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${inputs.city}&lang=pt_br&units=metric&appid=${process.env.REACT_APP_API_KEY_EXAMPLE}`
     )
     .then((res) => {
       dispatch(getNextWeather(res.data));
